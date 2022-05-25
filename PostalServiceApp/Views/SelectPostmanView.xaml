@@ -1,0 +1,86 @@
+﻿<Window x:Class="PostalServiceApp.Views.SelectPostmanView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:PostalServiceApp.ViewModels"
+        xmlns:local="clr-namespace:PostalServiceApp.Views"
+        d:DataContext="{d:DesignInstance viewModels:SelectPostmanViewModel}"
+        Icon="../Images/postman.png"
+        Name="SelectPostmanWindow"
+        mc:Ignorable="d"
+        FontSize="{DynamicResource FontSizeCommon}"
+        Title="Выбор почтальона"
+        Height="450" Width="800"
+        SizeToContent="WidthAndHeight">
+
+    <DockPanel>
+        <DataGrid DockPanel.Dock="Top"
+                  Height="Auto"
+                  Name="DgPostmans"
+                  HorizontalAlignment="Left"
+                  Margin="4"
+                  Width="{Binding Path=ActualWidth, ElementName=grid}"
+                  Style="{StaticResource DataGridCommon}"
+                  ItemsSource="{Binding Postmans}"
+                  SelectedItem="{Binding SelectedPostman}"
+                  VerticalScrollBarVisibility="Auto">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия"
+                                        Binding="{Binding Path=Surname}"
+                                        Width="Auto" />
+
+                <DataGridTextColumn Header="Имя"
+                                        Binding="{Binding Path=Name}"
+                                        Width="Auto" />
+
+                <DataGridTextColumn Header="Отчество"
+                                        Binding="{Binding Path=Patronymic}"
+                                        Width="Auto" />
+
+                <DataGridTextColumn Header="Обслуживаемых участков"
+                                        Binding="{Binding Path=DistrictsCount}"
+                                        Width="Auto">
+
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Padding" Value="0 0 5 0" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Адресов с доставками"
+                                        Binding="{Binding Path=DeliveriesAmount}"
+                                        Width="Auto">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="0 0 5 0" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel DockPanel.Dock="Bottom" 
+                    Margin="20 10"
+                    Orientation="Horizontal" 
+                    FlowDirection="RightToLeft"
+                    Height="Auto">
+
+            <Button Margin="0 0 20 0" HorizontalAlignment="Right"
+                    Width="120" Height="30" IsCancel="True" Content="Отмена"/>
+
+            <!-- Кнопки закрытия окна -->
+            <Button HorizontalAlignment="Left" Margin="0 0 0 0"
+                    Width="120" Height="30" 
+                    Command="{Binding OkCommand}" 
+                    CommandParameter="{Binding ElementName=SelectPostmanWindow}" 
+                    IsDefault="True"
+                    Content="Ок"/>
+        </StackPanel>
+
+    </DockPanel>
+</Window>

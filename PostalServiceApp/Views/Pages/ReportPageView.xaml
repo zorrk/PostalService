@@ -1,0 +1,143 @@
+﻿ <UserControl x:Class="PostalServiceApp.Views.Pages.ReportPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:viewModels="clr-namespace:PostalServiceApp.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostalServiceApp.Views"
+             xmlns:pages="clr-namespace:PostalServiceApp.ViewModels.Pages"
+             mc:Ignorable="d" 
+             Height="{DynamicResource PageHeight}" Width="{DynamicResource PageWidth}"
+             FontSize="{DynamicResource FontSizeCommon}"
+             d:DataContext="{d:DesignInstance pages:ReportPageViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition MinHeight="400" MaxHeight="900"/>
+        </Grid.RowDefinitions>
+
+        <!-- Информационый заголовок-->
+        <TextBlock Grid.Row="0" 
+                   Style="{DynamicResource HeadBlock}"
+                   Text="Информация и отчетность"/>
+
+      <!-- Панель инструментов -->
+        <ToolBarTray Grid.Row="1">
+            <ToolBar Style="{DynamicResource ToolBarStyle}">
+                <Button Command="{Binding BuildReportCommand}"
+                        ToolTip="Сформировать отчет">
+                    <Image Source="../../Images/report.png"></Image>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <GroupBox Grid.Row="2"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Header="Справочная информация" BorderThickness="2"
+                  Width="Auto"
+                  Height="Auto"
+                  Margin="10 10 0 0"
+                  Padding="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0 0 30 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Количество подписчиков:"
+                                   Margin="0 0 0 0" />
+                        <TextBlock Margin="8 0 0 0"
+                                   Text="{Binding SubscribersAmount}"
+                                   d:Text="57" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Количество подписок:"
+                                   Margin="0 5 0 0" />
+                        <TextBlock Margin="8 5 0 0"
+                                   Text="{Binding SubscribesAmount}"
+                                   d:Text="99" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="- на журналы:"
+                                   Margin="54 5 0 0" />
+                        <TextBlock Margin="8 5 0 0"
+                                   Text="{Binding MagazineSubscriptions}"
+                                   d:Text="37" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="- на газеты:"
+                                   Margin="54 5 0 0" />
+                        <TextBlock Margin="24 5 0 0"
+                                   Text="{Binding NewspaperSubscriptions}"
+                                   d:Text="42" />
+                    </StackPanel>
+                </StackPanel>
+
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0 0 30 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Различных изданий:"
+                                   Width="135"
+                                   Margin="0 0 0 0" />
+                        <TextBlock Margin="5 0 0 0"
+                                   Text="{Binding PublicationsAmount}"
+                                   d:Text="57" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="- журналов:"
+                                   Width="130"
+                                   TextAlignment="Right"
+                                   Margin="0 5 0 0" />
+                        <TextBlock Margin="5 5 0 0"
+                                   Text="{Binding MagazinesAmount}"
+                                   d:Text="37" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="- газет:        "
+                                   Width="130"
+                                   TextAlignment="Right"
+                                   Margin="0 5 0 0" />
+                        <TextBlock Margin="5 5 0 0"
+                                   Text="{Binding NewspapersAmount}"
+                                   d:Text="42" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Участков в отделении:"
+                                   Width="150"
+                                   Margin="0 0 0 0" />
+                        <TextBlock Margin="5 0 0 0"
+                                   Text="{Binding DistrictsAmount}"
+                                   d:Text="57" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Почтальонов:"
+                                   Width="150"
+                                   Margin="0 5 0 0" />
+                        <TextBlock Margin="5 5 0 0"
+                                   Text="{Binding PostmansAmount}"
+                                   d:Text="42" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Адресов с подписками:"
+                                   Width="150"
+                                   TextAlignment="Right"
+                                   Margin="0 5 0 0" />
+                        <TextBlock Margin="5 5 0 0"
+                                   Text="{Binding AddressesSubscribed}"
+                                   d:Text="37" />
+                    </StackPanel></StackPanel>
+            </Grid>
+
+        </GroupBox>
+
+
+    </Grid>
+</UserControl>

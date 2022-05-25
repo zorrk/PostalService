@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="PostalServiceApp.Views.Pages.AuthenticationPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostalServiceApp.Views"
+             xmlns:viewModels="clr-namespace:PostalServiceApp.ViewModels"
+             xmlns:pages="clr-namespace:PostalServiceApp.ViewModels.Pages"
+             mc:Ignorable="d" 
+             FontSize="{DynamicResource FontSizeCommon}"
+             
+             Height="200" Width="400"
+             d:DataContext="{d:DesignInstance pages:AuthenticationPageViewModel}">
+    <DockPanel>
+        <GroupBox Header="Войти в систему" DockPanel.Dock="Top" Margin="20" Padding="10">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Имя пользователя:" Width="130"/>
+                    <TextBox Text="{Binding Username}"
+                             Width="188"
+                             Margin="10 0 0 0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <TextBlock Text="Пароль:" Width="130"/>
+                    <PasswordBox x:Name="PasswordBox"
+                                 Width="188"
+                                 Margin="10 0 0 0"/>
+                </StackPanel>
+
+                <TextBlock Margin="0 10 0 0"
+                           Text="{Binding Status}"
+                           Foreground="Red"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0" FlowDirection="RightToLeft">
+                    <Button Content="Вход" Command="{Binding LoginCommand, Mode=OneTime}"
+                            CommandParameter="{Binding ElementName=PasswordBox}"
+                            HorizontalAlignment="Right"
+                            Width="100" Height="25"
+                            IsDefault="True"/>
+                </StackPanel>
+
+            </StackPanel>
+        </GroupBox>
+    </DockPanel>
+   
+</UserControl>
