@@ -37,8 +37,6 @@ public class AuthenticationPageViewModel : ViewModelBase
 		PasswordBox passwordBox = o as PasswordBox;
 		string clearTextPassword = passwordBox?.Password;
 
-		if (clearTextPassword.IsNullOrEmpty())  // devmode
-			clearTextPassword = "manager";
 
 		try
 		{

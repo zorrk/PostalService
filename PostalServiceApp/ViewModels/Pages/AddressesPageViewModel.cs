@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using PostalServiceApp.Infrastructure;
 using PostalServiceApp.Models;
@@ -132,7 +133,11 @@ public class AddressesPageViewModel : ViewModelBase
 			                     && a.Building == BuildingFilter));
 
 		if (district is null)
+		{
+			// TODO: вынести вывзов MessageBox из модели представления
+			MessageBox.Show("Адрес не найден", "Поиск адреса", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 			return;
+		}
 
 		SelectedDistrict = district;
 		SelectedAddress = DistrictAddresses.FirstOrDefault(a => a.Building == BuildingFilter);

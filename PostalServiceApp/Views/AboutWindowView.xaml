@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="О программе" 
         Height="215"
-        Width="540"
+        Width="575"
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
         FontSize="{DynamicResource FontSizeCommon}"
@@ -23,22 +23,19 @@
                        xml:space="preserve"
                        Foreground="#FF042271"
                        TextWrapping="Wrap">
-Программная система, предназначенная для работников почтового отделения, обеспечивающая хранение сведений о подписчиках газет и журналов, обслуживаемых отделением связи, и о почтальонах.
+Программная система для работников почтового отделения, обеспечивающая хранение и управление сведениями о периодических изданиях, подписчиках, обслуживаемых отделением связи, и почтальонах.
                 </TextBlock>
             </ScrollViewer>
 
             <!-- упраление окном -->
             <StackPanel Orientation="Horizontal" Height="40" HorizontalAlignment="Right"
                     Margin="0, 5, 15, 0">
-                <TextBox Margin="5"
+                <TextBlock Margin="5"
                        Height="25"
                        Foreground="#FF042271"
-                       IsReadOnly="True"
-                       IsTabStop="False"
-                       VerticalContentAlignment="Center"
-                       BorderThickness="0">
-                    Студент Масленников В., КА "Шаг", группа ПД011, Донецк, 2022
-                </TextBox>
+                >
+                    © 2022 Масленников В., <Hyperlink>https://github.com/zorrk/PostalService</Hyperlink>
+                </TextBlock>
                 <Button Margin="5 0"
                     Height="25"
                     Width="120"

@@ -31,6 +31,14 @@ public class MainWindowViewModel : ViewModelBase
 	private ViewModelBase _authenticationPageViewModel;
 
 
+	// Заголовок окна
+	private string _title;
+	public string Title
+	{
+		get => _title;
+		set => Set(ref _title, value);
+	}
+
 	// Текущий контент рабочей области окна
 	private ViewModelBase _currentContent;
 	public ViewModelBase CurrentContent
@@ -72,25 +80,35 @@ public class MainWindowViewModel : ViewModelBase
 	private RelayCommand _logOut;
 	public RelayCommand LogOutCommand => _logOut ??= new RelayCommand(_ =>
 	{
+		Title = Constants.AppTitle;
 		_authService.LogOut();
 	}, _ => _authService.IsAuthenticated);
 
 	public void UpdateAuth()
 	{
-		OnPropertyChanged(nameof(Principal));
-		CurrentContent = _authService.IsAuthenticated ? _subscribesPageViewModel : _authenticationPageViewModel;
-
 		CreateViewModels();
+
+		OnPropertyChanged(nameof(Principal));
+		if (_authService.IsAuthenticated)
+		{
+			CurrentContent = _subscribesPageViewModel;
+			Title = $"{Constants.AppTitle} - {Principal.Identity.Name}";
+		}
+		else
+			CurrentContent = _authenticationPageViewModel;
+
 	}
 
 	public MainWindowViewModel()
 	{
+		Title = Constants.AppTitle;
+
 		_authService.OnAuthenticate += (_, _) => UpdateAuth();
 		_authenticationPageViewModel = new AuthenticationPageViewModel(_authService);
 
-		_currentContent = _authenticationPageViewModel;
-
 		CreateViewModels();
+
+		_currentContent = _authenticationPageViewModel;
 	}
 
 	public void CreateViewModels()

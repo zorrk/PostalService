@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using PostalServiceClassLibrary.Context.Configuration;
 using PostalServiceClassLibrary.Models;
 using PostalServiceClassLibrary.Models.QueriesResults;
 
@@ -13,9 +14,15 @@ namespace PostalServiceClassLibrary.Context;
 // Класс контекста базы данных
 public partial class PostalDbContext : DbContext
 {
+	static PostalDbContext()
+	{
+		Database.SetInitializer(new PostalInitializer());
+	}
+
 	public PostalDbContext()
 		: base("name=PostalDb")
 	{
+		Database.Initialize(false);
 	}
 
 	public virtual DbSet<Address> Addresses { get; set; }

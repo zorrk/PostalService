@@ -136,6 +136,37 @@ public class SubscribeFormViewModel : ViewModelBase
 		set => Set(ref _totalPrice, value);
 	}
 
+	// Команда добавления в базу нового подписчика
+	private RelayCommand _newSubscriberCommand;
+	public RelayCommand NewSubscriberCommand => _newSubscriberCommand ??= new RelayCommand(_ =>
+	{
+
+		// Объект добавляемого элемента
+		var newSub = new Subscriber
+		{
+			Address = new Address
+			{
+				Street = new Street()
+			}
+		};
+
+		InputDataService ids = new();
+
+		if (ids.InputNewSubscriber(newSub) == false)
+			return;
+
+		_dataService.AddSubscriber(newSub);
+
+		_subscribersList = _dataService.Subscribers.ToList();
+
+		SubscribersView = CollectionViewSource.GetDefaultView(SubscribersList);
+		SubscribersView.Filter = OnSubersFilterTriggered;
+
+		// Установка добавленной записи как текущего элемента таблицы
+		SelectedSubscriber = _dataService.Subscribers.FirstOrDefault(p => p.Id == newSub.Id);
+	});
+
+
 	// Команда подтверждающего закрытия диалогового окна, сборка объекта подписки
 	private RelayCommand _okCommand;
 	public RelayCommand OkCommand => _okCommand ??= new RelayCommand(o =>

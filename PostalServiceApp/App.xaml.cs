@@ -24,6 +24,11 @@ public partial class App : Application
 
 		base.OnStartup(e);
 
+		// перехват необработанных исключений
+		DispatcherUnhandledException += (e, arg)
+			=> MessageBox.Show(arg.Exception.Message, "Ошибка",
+				MessageBoxButton.OK, MessageBoxImage.Error);
+
 		var mainWindow = new MainWindowView {DataContext = new MainWindowViewModel() };
 
 		mainWindow.Show();

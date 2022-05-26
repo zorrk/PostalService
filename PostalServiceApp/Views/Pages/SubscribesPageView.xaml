@@ -6,6 +6,7 @@
              xmlns:viewModels="clr-namespace:PostalServiceApp.ViewModels"
              xmlns:models="clr-namespace:PostalServiceClassLibrary.Models;assembly=PostalServiceClassLibrary"
              xmlns:local="clr-namespace:PostalServiceApp.Views"
+             xmlns:infrastructure="clr-namespace:PostalServiceApp.Infrastructure"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:pages="clr-namespace:PostalServiceApp.ViewModels.Pages"
              xmlns:threading="clr-namespace:System.Threading;assembly=mscorlib"
@@ -244,7 +245,9 @@
                    Style="{StaticResource DataGridCommon}"
                    ItemsSource="{Binding SubscribesColView}"
                    SelectedItem="{Binding SelectedSubscribe}"
-                   VerticalScrollBarVisibility="Auto">
+                   VerticalScrollBarVisibility="Auto"
+                   SelectionChanged="DgSubscribes_OnSelectionChanged"
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия И.О."
                                     Binding="{Binding Path=Subscriber.Person.ShortName}" />

@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:PostalServiceApp.Views"
              xmlns:viewModels="clr-namespace:PostalServiceApp.ViewModels"
              xmlns:pages="clr-namespace:PostalServiceApp.ViewModels.Pages"
+             xmlns:threading="clr-namespace:System.Threading;assembly=mscorlib"
              mc:Ignorable="d" 
              Height="{DynamicResource PageHeight}" Width="{DynamicResource PageWidth}"
              FontSize="{DynamicResource FontSizeCommon}"
@@ -30,15 +31,21 @@
             <ToolBar Style="{DynamicResource ToolBarStyle}">
                 <Button Command="{Binding NewSubscriberCommand}"
                         ToolTip="Внести данные о новом подписчике">
-                    <Image Source="../../Images/add_subscriber.png" Width="40" Height="40" ></Image>
+                    <Image Source="../../Images/add_subscriber.png" Width="40" Height="40"
+                           Visibility="{Binding Source={x:Static threading:Thread.CurrentPrincipal},
+                            Converter={StaticResource RoleToVisConv}, ConverterParameter=Operators}" ></Image>
                 </Button>
                 <Button Command="{Binding EditSubscriberCommand}"
                         Margin="4 0 0 0"
                         ToolTip="Редактировать данные подписчика">
-                    <Image Source="../../Images/edit_pub.png" Width="40" Height="40" ></Image>
+                    <Image Source="../../Images/edit_pub.png" Width="40" Height="40" 
+                           Visibility="{Binding Source={x:Static threading:Thread.CurrentPrincipal},
+                            Converter={StaticResource RoleToVisConv}, ConverterParameter=Operators}"></Image>
                 </Button>
 
-                <Separator Margin="5 0"/>
+                <Separator Margin="5 0"
+                           Visibility="{Binding Source={x:Static threading:Thread.CurrentPrincipal},
+                            Converter={StaticResource RoleToVisConv}, ConverterParameter=Operators}"/>
 
                 <!--#region Фильтрация -->
                 <!-- Фильтры -->
@@ -120,10 +127,11 @@
                    VerticalScrollBarVisibility="Auto">
 
             <DataGrid.ContextMenu>
-                <ContextMenu>
+                <ContextMenu
+                    Visibility="{Binding Source={x:Static threading:Thread.CurrentPrincipal},
+                            Converter={StaticResource RoleToVisConv}, ConverterParameter=Operators}">
                     <MenuItem Header="Добавить.." Command="{Binding NewSubscriberCommand}"></MenuItem>
                     <MenuItem Header="Изменить.." Command="{Binding EditSubscriberCommand}"></MenuItem>
-                    <MenuItem Header="Удалить" Command="{Binding DeleteSubscriberCommand}"></MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
 

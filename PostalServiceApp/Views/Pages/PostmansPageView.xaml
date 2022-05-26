@@ -30,10 +30,6 @@
         <!-- Панель инструментов -->
         <ToolBarTray Grid.Row="1">
             <ToolBar Style="{DynamicResource ToolBarStyle}">
-                <!--<Button Command="{Binding RefreshCommand}"
-                        ToolTip="Обновить">
-                    <Image Source="../../Images/refresh.png" Width="40" Height="40"/>
-                </Button>-->
                 <Button Command="{Binding NewPostmanCommand}"
                         ToolTip="Нанять нового почтальона"
                         Visibility="{Binding Source={x:Static threading:Thread.CurrentPrincipal},
@@ -68,16 +64,6 @@
                       ItemsSource="{Binding DataService.Postmans}"
                       SelectedItem="{Binding SelectedPostman}"
                       VerticalScrollBarVisibility="Auto">
-
-                <!--<DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Добавить.." Command="{Binding NewCommand}"></MenuItem>
-                    <MenuItem Header="Изменить.." Command="{Binding EditSubscriberCommand}"></MenuItem>
-                    <MenuItem Header="Удалить" Command="{Binding DeleteSubscriberCommand}"></MenuItem>
-                </ContextMenu>
-            </DataGrid.ContextMenu>-->
-
-
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Фамилия"
                                         Binding="{Binding Path=Surname}"
@@ -117,8 +103,6 @@
             </DataGrid>
 
             <DockPanel Grid.Column="1">
-                <!--<TextBlock Margin="10 10 0 0"
-                           Text="Участки, обслуживаемые почтальоном:" />-->
 
                 <DataGrid DockPanel.Dock="Top"
                           Margin="10 0 10 0"

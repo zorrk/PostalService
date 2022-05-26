@@ -282,10 +282,6 @@
     <Resource Include="Images\subs.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\PostalService.mdf" />
-    <Content Include="App_Data\PostalService_log.ldf">
-      <DependentUpon>PostalService.mdf</DependentUpon>
-    </Content>
     <Resource Include="Images\postal.png" />
     <Resource Include="Images\refresh.png" />
     <Resource Include="Images\change_postman.png" />

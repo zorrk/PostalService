@@ -11,8 +11,10 @@
              
              Height="200" Width="400"
              d:DataContext="{d:DesignInstance pages:AuthenticationPageViewModel}">
+
     <DockPanel>
-        <GroupBox Header="Войти в систему" DockPanel.Dock="Top" Margin="20" Padding="10">
+        <GroupBox Header="Войти в систему" DockPanel.Dock="Top" Margin="20" Padding="10"
+                  ToolTip="Тестовые данные для входа:&#x0a;заведующий - логин и пароль: &quot;manager&quot;, &#x0a;оператор - логин и пароль: &quot;operator&quot;">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Имя пользователя:" Width="130"/>
@@ -26,6 +28,7 @@
                     <PasswordBox x:Name="PasswordBox"
                                  Width="188"
                                  Margin="10 0 0 0"/>
+
                 </StackPanel>
 
                 <TextBlock Margin="0 10 0 0"

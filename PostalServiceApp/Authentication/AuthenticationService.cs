@@ -97,6 +97,7 @@ public class AuthenticationService : IAuthenticationService, IAuthNotify
 
 
 	// Хардкод хранимых учетных данных
+	// TODO: перенести в таблицу БД
 	private static readonly List<InternalUserData> _users = new()
 	{
 		new InternalUserData("manager", "manager@company.com",

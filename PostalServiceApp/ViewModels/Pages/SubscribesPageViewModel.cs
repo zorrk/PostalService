@@ -105,16 +105,17 @@ public class SubscribesPageViewModel : ViewModelBase
 	// Конструктор
 	public SubscribesPageViewModel(DataService dataService)
 	{
+
 		_dataService = dataService;
+
+		_dataService.Subscribes.CollectionChanged += (_, _) => Update();
+		_dataService.OnUpdateSubscribes += (_, _) => Update();
 
 		// Выбранный элемент фильтрации по типу изданий
 		SelectedType = PubTypes.First();
 		SelectedDuration = DurationsList.First();
 
 		Update();
-
-		_dataService.Subscribes.CollectionChanged += (_, _) => Update();
-		_dataService.OnUpdateSubscribes += (_, _) => Update();
 	}
 
 	public void Update()

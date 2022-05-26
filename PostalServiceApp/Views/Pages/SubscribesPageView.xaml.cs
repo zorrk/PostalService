@@ -24,4 +24,13 @@ public partial class SubscribesPageView : UserControl
 
 	}
 
+	private void DgSubscribes_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		if(sender is DataGrid grid)
+		{
+			var selected = grid.SelectedItem;
+			if (selected != null) 
+				grid.ScrollIntoView(selected);
+		}
+	}
 }

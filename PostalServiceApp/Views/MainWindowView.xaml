@@ -7,9 +7,8 @@
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:pages="clr-namespace:PostalServiceApp.Views.Pages"
         xmlns:pagesViewModels="clr-namespace:PostalServiceApp.ViewModels.Pages"
-        xmlns:infrastructure="clr-namespace:PostalServiceApp.Infrastructure"
         mc:Ignorable="d"
-        Title="Почтовая система"
+        Title="{Binding Title}"
         Height="Auto" Width="Auto"
         MaxHeight="700"
         SizeToContent="WidthAndHeight" 
@@ -19,6 +18,7 @@
         Icon="../Images/postal.png"
         d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}">
 
+    <!-- Настройка соответствия view и viewModel для разделов приложения -->
     <Window.Resources>
         <DataTemplate DataType="{x:Type pagesViewModels:PublicationsPageViewModel}">
             <pages:PublicationsPageView/>
@@ -50,7 +50,7 @@
             <!-- Область с данными -->
             <RowDefinition Height="*"/>
             <!-- Строка состояния -->
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" 
@@ -179,6 +179,7 @@
 
             </StackPanel>
 
+            <!--Вывод контента текущего раздела приложения для работы-->
             <Grid Grid.Column="1" Margin="2">
                 <ContentControl Content="{Binding CurrentContent}"/>
             </Grid>
@@ -193,6 +194,7 @@
                              Converter={StaticResource RoleToVisConv},
                              ConverterParameter=Authenticated}" >
             <TextBlock Text="{Binding StatusInfo}"
+                       FontSize="14"
                        Visibility="{Binding Principal,
                              Converter={StaticResource RoleToVisConv},
                              ConverterParameter=Authenticated}"/>
