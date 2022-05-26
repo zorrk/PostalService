@@ -12,9 +12,14 @@
              Height="200" Width="400"
              d:DataContext="{d:DesignInstance pages:AuthenticationPageViewModel}">
 
+    <UserControl.Resources>
+        <Style TargetType="Image">
+            <Setter Property="ToolTipService.InitialShowDelay" Value="50"/>
+        </Style>
+    </UserControl.Resources>
+
     <DockPanel>
-        <GroupBox Header="Войти в систему" DockPanel.Dock="Top" Margin="20" Padding="10"
-                  ToolTip="Тестовые данные для входа:&#x0a;заведующий - логин и пароль: &quot;manager&quot;, &#x0a;оператор - логин и пароль: &quot;operator&quot;">
+        <GroupBox Header="Войти в систему" DockPanel.Dock="Top" Margin="20" Padding="10">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Имя пользователя:" Width="130"/>
@@ -41,6 +46,9 @@
                             HorizontalAlignment="Right"
                             Width="100" Height="25"
                             IsDefault="True"/>
+                    <Image Source="../../Images/info-25.png" Width="25" Height="25" Margin="10 0"
+                           FlowDirection="LeftToRight"
+                           ToolTip="Тестовые данные для входа:&#x0a;заведующий - логин и пароль: &quot;manager&quot;, &#x0a;оператор - логин и пароль: &quot;operator&quot;"/>
                 </StackPanel>
 
             </StackPanel>

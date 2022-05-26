@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostalServiceClassLibrary", "PostalServiceClassLibrary\PostalServiceClassLibrary.csproj", "{C5A059F5-7DA3-4FD3-BC68-02E2F69BED9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostalServiceApp", "PostalServiceApp\PostalServiceApp.csproj", "{93F8A4C6-CCDC-41FF-97F3-22EB9966E483}"
-EndProject
+EndProject 
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
